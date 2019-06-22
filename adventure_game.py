@@ -1,0 +1,1 @@
+print("You find yourself in a dark dungeon.")
