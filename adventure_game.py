@@ -5,8 +5,8 @@ def print_pause(message):
     print(message)
     time.sleep(2)
 
-def get_enemy(enemy_list):
-    enemy = random.choice(enemy_list)
+def get_random_enemy():
+    enemy = random.choice(['troll', 'pirate', 'wicked fairie', 'dragon', 'gorgon'])
     return enemy
 
 def intro():
@@ -40,8 +40,7 @@ def field():
     print("Player In the field")
 
 def play_game():
-    enemy_list = ['troll', 'pirate', 'wicked fairie', 'dragon', 'gorgon']
-    enemy = get_enemy(enemy_list)
+    enemy = get_random_enemy()
     print(enemy)
     intro()
     get_choice()
