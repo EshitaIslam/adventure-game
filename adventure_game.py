@@ -1,8 +1,13 @@
 import time
+import random
       
 def print_pause(message):
     print(message)
     time.sleep(2)
+
+def get_enemy(enemy_list):
+    enemy = random.choice(enemy_list)
+    return enemy
 
 def intro():
     print_pause("You find yourself in a dark dungeon.")
@@ -35,6 +40,9 @@ def field():
     print("Player In the field")
 
 def play_game():
+    enemy_list = ['troll', 'pirate', 'wicked fairie', 'dragon', 'gorgon']
+    enemy = get_enemy(enemy_list)
+    print(enemy)
     intro()
     get_choice()
 
