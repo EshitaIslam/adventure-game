@@ -9,25 +9,25 @@ def get_random_enemy():
     enemy = random.choice(['troll', 'pirate', 'wicked fairie', 'dragon', 'gorgon'])
     return enemy
 
-def intro():
-    print_pause("You find yourself in a dark dungeon.")
-    print_pause("In front of you are two passageways.")
+def intro(enemy):
+    print_pause("You find yourself standing in an open field, filled with grass and yellow wildflowers.")
+    print_pause(f"Rumor has it that a {enemy} is somewhere around here, and has been terrifying the nearby willage")
+    print_pause("In front of you is a house")
+    print_pause("In your right is a dark cave")
 
-def get_choice():    
-    valid_choice = False
-    choice = ""
-    while not valid_choice:
-        print("")
-        print("Enter 1 to knock on the door of the house.")
-        print("Enter 2 to peer into the cave.")
-        choice = input("(Please enter 1 or 2.)\n")
-        valid_choice = (choice == "1" or choice == "2")
+def get_choice(choices):        
+    
+    print("")
+    for choice in choices:
+        print_pause(choice)
+    print("What would you like to do?")
 
-    if choice == "1":
-        house()
-    elif choice == "2":
-        cave()
-
+    selected_choice = ""
+    while not (selected_choice == "1" or selected_choice == "2"):       
+        selected_choice = input("(Please enter 1 or 2.)\n")
+        
+    return selected_choice
+    
 def house():
     # Things that happen to the player in the house
     print("Player inside the house")
@@ -41,8 +41,12 @@ def field():
 
 def play_game():
     enemy = get_random_enemy()
-    print(enemy)
-    intro()
-    get_choice()
+    
+    intro(enemy)
+    choice = get_choice(["Enter 1 to knock on the door of the house.","Enter 2 to peer into the cave."])
+    if choice == "1":
+        house()
+    elif choice == "2":
+        cave()
 
 play_game()
