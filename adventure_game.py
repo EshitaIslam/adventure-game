@@ -13,7 +13,7 @@ def intro(enemy):
     print_pause("You find yourself standing in an open field, filled with grass and yellow wildflowers.")
     print_pause(f"Rumor has it that a {enemy} is somewhere around here, and has been terrifying the nearby village.")
     print_pause("In front of you is a house.")
-    print_pause("In your right is a dark cave.")
+    print_pause("To your right is a dark cave.")
     print_pause("In your hand you hold your trusty (but not very effective) dagger.")
 
 def get_choice(choices):        
@@ -46,20 +46,20 @@ def house(enemy, weapons_picked, special_weapon):
             print_pause(f"But your dagger is no match for the {enemy}.")
             print_pause("You have been defeated!")
         elif choice == "2":
-            print_pause("You run back into the field. Luckily, you don't seem to have been followed.")
-            print_pause("")
-            choice = get_choice(["Enter 1 to knock on the door of the house.","Enter 2 to peer into the cave."])
-            if choice == "1":
-                house(enemy, weapons_picked, special_weapon)
-            elif choice == "2":
-                cave(weapons_picked)
+            field(enemy, weapons_picked, special_weapon)
 
-def cave(weapons_picked):
+def cave(enemy, weapons_picked, special_weapon):
     # Things that happen to the player in the cave
     print("Player In the cave")
 
-def field():
-    print("Player In the field")
+def field(enemy, weapons_picked, special_weapon):
+    print_pause("You run back into the field. Luckily, you don't seem to have been followed.")
+    print_pause("")
+    choice = get_choice(["Enter 1 to knock on the door of the house.","Enter 2 to peer into the cave."])
+    if choice == "1":
+        house(enemy, weapons_picked, special_weapon)
+    elif choice == "2":
+        cave(enemy, weapons_picked, special_weapon)
 
 def play_game():
     enemy = get_random_enemy()
@@ -71,6 +71,6 @@ def play_game():
     if choice == "1":
         house(enemy, weapons_picked, special_weapon)
     elif choice == "2":
-        cave(weapons_picked)
+        cave(enemy, weapons_picked, special_weapon)
 
 play_game()
