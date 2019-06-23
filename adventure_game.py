@@ -1,6 +1,5 @@
 import time
       
-
 def print_pause(message):
     print(message)
     time.sleep(2)
@@ -35,7 +34,8 @@ def cave():
 def field():
     print("Player In the field")
 
+def play_game():
+    intro()
+    get_choice()
 
-
-intro()
-get_choice()
+play_game()
