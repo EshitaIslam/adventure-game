@@ -16,8 +16,7 @@ def intro(enemy):
     print_pause("To your right is a dark cave.")
     print_pause("In your hand you hold your trusty (but not very effective) dagger.")
 
-def get_choice(choices):        
-    
+def get_choice(choices):            
     print("")
     for choice in choices:
         print_pause(choice)
@@ -59,11 +58,11 @@ def cave(enemy, weapons_picked, special_weapon):
     if not special_weapon in weapons_picked:
         print_pause("It turns out to be only a very small cave.")
         print_pause("Your eye catches a glint of metal behind a rock.")
-        print_pause(f"You have found the magical {special_weapon}")
+        print_pause(f"You have found the magical {special_weapon}!")
         print_pause("You discard your silly old dagger and take the sword with you.")
         weapons_picked.append(special_weapon)
     else:
-        print_pause("You've been here before, and gotten all the good stuff. It's just an empty cave now")
+        print_pause("You've been here before, and gotten all the good stuff. It's just an empty cave now.")
     
     print_pause("You walk back out to the field.")
     
@@ -83,15 +82,30 @@ def field(enemy, weapons_picked, special_weapon):
         cave(enemy, weapons_picked, special_weapon)
 
 def play_game():
-    enemy = get_random_enemy()
-    weapons_picked = []
-    special_weapon = "Sword of Ogorth"
-    
-    intro(enemy)
-    choice = get_choice(["Enter 1 to knock on the door of the house.","Enter 2 to peer into the cave."])
-    if choice == "1":
-        house(enemy, weapons_picked, special_weapon)
-    elif choice == "2":
-        cave(enemy, weapons_picked, special_weapon)
+
+    play_game = True
+
+    while play_game == True:
+        enemy = get_random_enemy()
+        weapons_picked = []
+        special_weapon = "Sword of Ogorth"
+        
+        intro(enemy)
+        choice = get_choice(["Enter 1 to knock on the door of the house.","Enter 2 to peer into the cave."])
+        if choice == "1":
+            house(enemy, weapons_picked, special_weapon)
+        elif choice == "2":
+            cave(enemy, weapons_picked, special_weapon)
+
+        while True:
+            choice = input("Would you like to play again (y/n)? ")
+            if choice.startswith("y"):
+                print_pause("Excellent! Restarting the game...")
+                break
+            elif choice.startswith("n"):
+                print_pause("Thanks for playing!")
+                play_game = False
+                break
+
 
 play_game()
