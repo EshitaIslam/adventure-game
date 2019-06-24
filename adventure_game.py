@@ -36,17 +36,23 @@ def house(enemy, weapons_picked, special_weapon):
     print_pause(f"The {enemy} attacks you!")
 
     if special_weapon in weapons_picked:
-        print_pause(f"But the {enemy} takes one look at your shiny new toy and runs away!")
-        print_pause(f"You have rid the town of the {enemy}. You are victorious!")
+        print("")
     else:
         print_pause("You feel a bit under-prepared for this, what with only having a tiny dagger.")
-        choice = get_choice(["Enter 1 to fight", "Enter 2 to run away"])
-        if choice == "1":
+    
+    choice = get_choice(["Enter 1 to fight", "Enter 2 to run away"])
+    if choice == "1":
+        if special_weapon in weapons_picked:
+            print_pause(f"As the {enemy} moves to attack, you unsheath your new sword.")
+            print_pause(f"The {special_weapon} shines brightly in your hand as you brace yourself for the attack.")
+            print_pause(f"But the {enemy} takes one look at your shiny new toy and runs away!")
+            print_pause(f"You have rid the town of the {enemy}. You are victorious!")
+        else:            
             print_pause("You do your best...")
             print_pause(f"But your dagger is no match for the {enemy}.")
             print_pause("You have been defeated!")
-        elif choice == "2":
-            field(enemy, weapons_picked, special_weapon)
+    elif choice == "2":
+        field(enemy, weapons_picked, special_weapon)
 
 def cave(enemy, weapons_picked, special_weapon):
     # Things that happen to the player in the cave
