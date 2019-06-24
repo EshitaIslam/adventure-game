@@ -3,7 +3,7 @@ import random
       
 def print_pause(message):
     print(message)
-    time.sleep(2)
+    time.sleep(random.choice([1, 2]))
 
 def get_random_enemy():
     enemy = random.choice(['troll', 'pirate', 'wicked fairie', 'dragon', 'gorgon'])
@@ -31,7 +31,7 @@ def get_choice(choices):
     
 def house(enemy, weapons_picked, special_weapon):    
     print_pause("You approach the door of the house.")
-    print_pause(f"You are about to knock when the door opens and out steps a {enemy}")
+    print_pause(f"You are about to knock when the door opens and out steps a {enemy}.")
     print_pause(f"Eep! This is the {enemy}'s house!")
     print_pause(f"The {enemy} attacks you!")
 
@@ -66,6 +66,7 @@ def cave(enemy, weapons_picked, special_weapon):
         print_pause("You've been here before, and gotten all the good stuff. It's just an empty cave now")
     
     print_pause("You walk back out to the field.")
+    
     choice = get_choice(["Enter 1 to knock on the door of the house.","Enter 2 to peer into the cave."])
     if choice == "1":
         house(enemy, weapons_picked, special_weapon)
