@@ -48,7 +48,7 @@ def house(enemy, weapons_picked, special_weapon):
     print("")
     print_pause("You approach the door of the house.")
     print_pause(f"You are about to knock when the door opens "
-                "and out steps a {enemy}.")
+                f"and out steps a {enemy}.")
     print_pause(f"Eep! This is the {enemy}'s house!")
     print_pause(f"The {enemy} attacks you!")
 
