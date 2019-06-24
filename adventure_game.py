@@ -35,9 +35,7 @@ def house(enemy, weapons_picked, special_weapon):
     print_pause(f"Eep! This is the {enemy}'s house!")
     print_pause(f"The {enemy} attacks you!")
 
-    if special_weapon in weapons_picked:
-        print("")
-    else:
+    if not special_weapon in weapons_picked:        
         print_pause("You feel a bit under-prepared for this, what with only having a tiny dagger.")
     
     choice = get_choice(["Enter 1 to fight", "Enter 2 to run away"])
@@ -56,7 +54,23 @@ def house(enemy, weapons_picked, special_weapon):
 
 def cave(enemy, weapons_picked, special_weapon):
     # Things that happen to the player in the cave
-    print("Player In the cave")
+    print_pause("You peer cautiously into the cave.")
+    
+    if not special_weapon in weapons_picked:
+        print_pause("It turns out to be only a very small cave.")
+        print_pause("Your eye catches a glint of metal behind a rock.")
+        print_pause(f"You have found the magical {special_weapon}")
+        print_pause("You discard your silly old dagger and take the sword with you.")
+        weapons_picked.append(special_weapon)
+    else:
+        print_pause("You've been here before, and gotten all the good stuff. It's just an empty cave now")
+    
+    print_pause("You walk back out to the field.")
+    choice = get_choice(["Enter 1 to knock on the door of the house.","Enter 2 to peer into the cave."])
+    if choice == "1":
+        house(enemy, weapons_picked, special_weapon)
+    elif choice == "2":
+        cave(enemy, weapons_picked, special_weapon)
 
 def field(enemy, weapons_picked, special_weapon):
     print_pause("You run back into the field. Luckily, you don't seem to have been followed.")
