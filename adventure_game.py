@@ -130,9 +130,9 @@ def play_game():
         elif choice == "2":
             cave(enemy, weapons_picked, special_weapon)
 
+        print("GAME OVER!")
+        print("")
         while True:
-            print("")
-            print("GAME OVER!")
             choice = input("Would you like to play again (y/n)? ")
             if choice.startswith("y"):
                 print_pause("Excellent! Restarting the game...")
