@@ -18,6 +18,17 @@ def get_random_enemy():
     return enemy
 
 
+def main_choice(enemy, weapons_picked, special_weapon):
+    choice = get_choice([
+                            "Enter 1 to knock on the door of the house.",
+                            "Enter 2 to peer into the cave."
+                        ])
+    if choice == "1":
+        house(enemy, weapons_picked, special_weapon)
+    elif choice == "2":
+        cave(enemy, weapons_picked, special_weapon)
+
+
 def intro(enemy):
     print("")
     print("")
@@ -93,13 +104,7 @@ def cave(enemy, weapons_picked, special_weapon):
                     "the good stuff. It's just an empty cave now.")
 
     print_pause("You walk back out to the field.")
-
-    choice = get_choice(["Enter 1 to knock on the door of the house.",
-                        "Enter 2 to peer into the cave."])
-    if choice == "1":
-        house(enemy, weapons_picked, special_weapon)
-    elif choice == "2":
-        cave(enemy, weapons_picked, special_weapon)
+    main_choice(enemy, weapons_picked, special_weapon)
 
 
 def field(enemy, weapons_picked, special_weapon):
@@ -107,12 +112,7 @@ def field(enemy, weapons_picked, special_weapon):
     print_pause("You run back into the field. Luckily, "
                 "you don't seem to have been followed.")
     print_pause("")
-    choice = get_choice(["Enter 1 to knock on the door of the house.",
-                        "Enter 2 to peer into the cave."])
-    if choice == "1":
-        house(enemy, weapons_picked, special_weapon)
-    elif choice == "2":
-        cave(enemy, weapons_picked, special_weapon)
+    main_choice(enemy, weapons_picked, special_weapon)
 
 
 def play_game():
@@ -123,12 +123,7 @@ def play_game():
         special_weapon = "Sword of Ogorth"
 
         intro(enemy)
-        choice = get_choice(["Enter 1 to knock on the door of the house.",
-                            "Enter 2 to peer into the cave."])
-        if choice == "1":
-            house(enemy, weapons_picked, special_weapon)
-        elif choice == "2":
-            cave(enemy, weapons_picked, special_weapon)
+        main_choice(enemy, weapons_picked, special_weapon)
 
         print("GAME OVER!")
         print("")
