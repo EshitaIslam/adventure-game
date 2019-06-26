@@ -18,17 +18,6 @@ def get_random_enemy():
     return enemy
 
 
-def main_choice(enemy, weapons_picked, special_weapon):
-    choice = get_choice([
-                            "Enter 1 to knock on the door of the house.",
-                            "Enter 2 to peer into the cave."
-                        ])
-    if choice == "1":
-        house(enemy, weapons_picked, special_weapon)
-    elif choice == "2":
-        cave(enemy, weapons_picked, special_weapon)
-
-
 def intro(enemy):
     print("")
     print("")
@@ -53,6 +42,17 @@ def get_choice(choices):
         selected_choice = input("Please enter 1 or 2: ")
 
     return selected_choice
+
+
+def main_choice(enemy, weapons_picked, special_weapon):
+    choice = get_choice([
+                            "Enter 1 to knock on the door of the house.",
+                            "Enter 2 to peer into the cave."
+                        ])
+    if choice == "1":
+        house(enemy, weapons_picked, special_weapon)
+    elif choice == "2":
+        cave(enemy, weapons_picked, special_weapon)
 
 
 def house(enemy, weapons_picked, special_weapon):
